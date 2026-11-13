@@ -73,20 +73,31 @@
   const ayah = a => `<div class="ayah"><div class="ar" lang="ar">${a.ar}</div><div class="en">${a.en}</div><div class="ref">${a.ref}</div></div>`;
 
   /* ---------- page specs ---------- */
+  function fullPhoto(scene, pos = '50% 50%') {
+    return CFG.photos[scene]
+      ? `<div class="mc-photo" style="background-image:url('${CFG.photos[scene]}');background-position:${pos}"></div>`
+      : `<svg class="mc-photo" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice" aria-hidden="true">${SC[scene]()}</svg>`;
+  }
   function frontHTML() {
-    return `<div class="glowbg"></div>${frame(NAVY)}<div class="cv-ar" lang="ar">قصص الأنبياء</div><div class="cv-title">${CFG.title}</div><div class="cv-glow"></div>
-    <div class="cv-art">${archArt('cover', 440, 400, 'A starry desert night with a crescent moon, a lantern and a camel caravan')}</div>
-    <div class="cv-badge" style="left:110px;top:528px">${badgeSVG()}<span>${CFG.series.replace(' ', '<br>')}</span></div>
-    <div class="cv-badge" style="left:598px;top:528px">${badgeSVG()}<span>Ages<br>5–10</span></div>
-    <div class="cv-rib">${ribbon()}<div class="t">${CFG.subtitle}</div></div><div class="cv-author">${CFG.author}</div>`;
+    const [t1, ...rest] = CFG.title.split(' of ');
+    return `${fullPhoto('cover', '30% 60%')}<div class="mc-shade-top"></div><div class="mc-shade-bot"></div>
+    <div class="mc-head"><div class="mc-ar" lang="ar">قصص الأنبياء</div>
+    <div class="mc-title">${rest.length ? `${t1} of<br>${rest.join(' of ')}` : CFG.title}</div>
+    <div class="mc-pill">${CFG.subtitle}</div></div>
+    <div class="mc-age"><b>Ages</b><span>5–10</span></div>
+    <div class="mc-foot"><div class="mc-series">${CFG.series}</div><div class="mc-author">${CFG.author}</div></div>`;
   }
   function backHTML() {
-    return `<div class="glowbg"></div>${frame(NAVY)}<div class="bk"><div class="ar" lang="ar">قصص الأنبياء</div><h2>Six true stories from the Qur’an</h2>${divider(240, '#E2B65A')}
+    const shots = ['nuh3', 'hud1', 'nuh5'].filter(k => CFG.photos[k]);
+    return `<div class="mc-back"></div><div class="mb">
+    <div class="mb-ar" lang="ar">قصص الأنبياء</div>
+    <h2>Six true stories from the Qur’an</h2>
     <p>Long ago, Allah sent prophets to teach people to worship Him alone and to be kind and good. Travel from the beautiful garden of Jannah to the great ark of Nuh, from the giant pillars of ‘Ad to the camel that came out of a rock, and to the fire that turned cool for Ibrahim.</p>
+    ${shots.length ? `<div class="mb-shots">${shots.map(k => `<div style="background-image:url('${CFG.photos[k]}')"></div>`).join('')}</div>` : ''}
+    <div class="mb-names">${VALUES.map(k => `<span>${CH[k].name || k}</span>`).join('')}</div>
     <ul><li>Simple words for children aged 5 to 10</li><li>Short ayahs in Arabic with easy meanings</li><li>A lesson and a talk-together question after every story</li><li>A story quiz and a good-manners star chart</li></ul>
-    <div class="meds">${VALUES.map(k => `<div class="med" lang="ar">${CH[k].ar}</div>`).join('')}</div>
-    <p class="note">Out of love and respect, no prophet is ever drawn in this book.</p></div>
-    <div class="bk-foot">${CFG.publisher}<br>Ages 5–10</div>`;
+    <p class="mb-note">Out of love and respect, no prophet is ever shown in this book.</p></div>
+    <div class="mb-foot">${CFG.publisher}</div>`;
   }
   const S = {
     front: () => ({ cls: 'night cover', frameless: true, html: frontHTML(), alt: `${CFG.title}: ${CFG.subtitle}. Front cover.` }),
