@@ -40,6 +40,9 @@
     ${num ? `<circle cx="408" cy="779" r="20" fill="#FBF5E8" stroke="url(#gold)" stroke-width="3"/><text x="408" y="785.5" text-anchor="middle" font-family="Baloo 2" font-weight="800" font-size="17" fill="#1C3B73">${num}</text>` : ''}
     </svg>`;
   }
+  function pageNum(n, band) {
+    return `<svg class="frame" viewBox="0 0 816 816" aria-hidden="true"><text x="408" y="784" text-anchor="middle" font-family="Baloo 2" font-weight="700" font-size="17" fill="#8A6A3A">${n}</text></svg>`;
+  }
   function divider(w = 260, col = '#C8922E') {
     return `<svg class="dv" width="${w}" height="22" viewBox="0 0 ${w} 22" aria-hidden="true"><line x1="0" y1="11" x2="${w / 2 - 40}" y2="11" stroke="${col}" stroke-width="1.5"/><line x1="${w / 2 + 40}" y1="11" x2="${w}" y2="11" stroke="${col}" stroke-width="1.5"/>
     <polygon points="${pts(w / 2, 11, 10, 7.65, 8, 0)}" fill="${col}"/><circle cx="${w / 2 - 28}" cy="11" r="3" fill="${col}"/><circle cx="${w / 2 + 28}" cy="11" r="3" fill="${col}"/></svg>`;
@@ -157,7 +160,7 @@
     if (sp.ch) { s.style.setProperty('--ch', CH[sp.ch].color); s.style.setProperty('--dk', DARK[sp.ch]); }
     const bg = sp.cls.includes('paper') ? '<svg class="bg" aria-hidden="true"><rect width="100%" height="100%" fill="url(#pat-paper)"/></svg>'
       : `<svg class="bg" aria-hidden="true"><rect width="100%" height="100%" fill="url(#pat-lines)" opacity="${sp.cls.includes('opener') ? .2 : .14}"/></svg>`;
-    s.innerHTML = bg + `<div class="trim">${sp.pre || ''}${sp.frameless ? '' : frame(sp.band || TEAL, sp.num ? sp.n : null)}${sp.html}</div>`;
+    s.innerHTML = bg + `<div class="trim">${sp.pre || ''}${sp.num ? pageNum(sp.n, sp.band) : ''}${sp.html}</div>`;
     if (mode === 'print') { s.style.setProperty('--tx', (sp.n % 2 === 1 ? 0 : 12) + 'px'); s.style.setProperty('--ty', '12px'); }
     return s;
   }
