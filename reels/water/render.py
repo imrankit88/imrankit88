@@ -524,7 +524,8 @@ scene(72.0, 80.0, sc_favors, ayah_block('فَبِأَيِّ آلَاءِ رَب�
 scene(79.5, 85.0, sc_end, [
     TextEl('SIGNS IN THE QURAN', CAPS_B, 50, GOLD, 1250, 80.6, None, tracking=6, glow=0.5),
     TextEl('Part I  ·  Water', SERIF_I, 44, CREAM, 1335, 81.2, None),
-    TextEl('Reflect. Share. Follow for the next sign.', SERIF_I, 36, DIM, 1700, 82.0, None, glow=0.2),
+    TextEl('@islamevryday', SERIF_I, 58, GOLD, 1560, 81.6, None, glow=0.6),
+    TextEl('Follow for the next sign', SERIF_I, 36, DIM, 1640, 82.2, None, glow=0.2),
 ])
 TOTAL = 85.0
 
@@ -534,6 +535,8 @@ def counter_el(n):
     if n not in DIGITS:
         DIGITS[n] = TextEl(str(n), CAPS_B, 150, GOLD, 1390, -10, None, glow=0.8)
     return DIGITS[n]
+
+WATERMARK = TextEl('@islamevryday', SERIF_I, 32, (150, 140, 120), 1690, 0.6, 79.3, glow=0.0)
 
 GRAIN = np.random.default_rng(5).normal(0, 1, (8, BH, BW)).astype(np.float32)
 VIG = np.clip(1 - ((NX - 0.5) ** 2 * 1.4 + (NY - 0.5) ** 2 * 0.9), 0, 1) ** 0.8
@@ -569,6 +572,7 @@ def render(fi):
         n = int(clamp((t - COUNT[0]) / COUNT[1]) * 63)
         e = counter_el(n); e.t_in = 7.0; e.t_out = 12.8
         e.draw(big, t)
+    WATERMARK.draw(big, t)
     if TOTAL - 1.0 <= t:
         big *= 1 - smooth(TOTAL - 1.0, TOTAL, t)
     return (np.clip(big, 0, 1) * 255).astype(np.uint8)
