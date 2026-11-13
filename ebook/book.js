@@ -95,7 +95,7 @@
     <p>Long ago, Allah sent prophets to teach people to worship Him alone and to be kind and good. Travel from the beautiful garden of Jannah to the great ark of Nuh, from the giant pillars of ‘Ad to the camel that came out of a rock, and to the fire that turned cool for Ibrahim.</p>
     ${shots.length ? `<div class="mb-shots">${shots.map(k => `<div style="background-image:url('${CFG.photos[k]}')"></div>`).join('')}</div>` : ''}
     <div class="mb-names">${VALUES.map(k => `<span>${CH[k].name || k}</span>`).join('')}</div>
-    <ul><li>Simple words for children aged 5 to 10</li><li>Short ayahs in Arabic with easy meanings</li><li>A lesson and a talk-together question after every story</li><li>A story quiz and a good-manners star chart</li></ul>
+    <ul><li>Simple words for children aged 5 to 10</li><li>Short ayahs in Arabic with easy meanings</li><li>A lesson and a talk-together question after every story</li><li>A fun story quiz at the end</li></ul>
     <p class="mb-note">Out of love and respect, no prophet is ever shown in this book.</p></div>
     <div class="mb-foot">${CFG.publisher}</div>`;
   }
@@ -152,7 +152,6 @@
     L.push(S.title(), S.belongs(), S.copy(), S.bismillah(), S.parents(), S.toc());
     VALUES.forEach(ch => { L.push(opener(ch)); const ps = PAGES.filter(p => p.ch === ch); ps.forEach((p, i) => L.push(story(p, i === 0))); L.push(lesson(ps.find(p => p.lesson))); });
     const q = S.quiz(); q.label = 'Story Quiz'; L.push(q);
-    const st = S.stars(); st.label = 'My Good Manners Stars'; L.push(st);
     L.push(S.end());
     if (mode === 'ebook') L.push(S.back());
     return L;

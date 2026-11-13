@@ -40,7 +40,7 @@
 > - Short ayahs in Arabic with easy English meanings
 > - A "What We Learn" page after each story: saying sorry, loving to learn, patience, being thankful, keeping promises and courage
 > - A "Talk Together" question for parents and teachers after each story
-> - A story quiz, a good-manners star chart and a "This book belongs to" page
+> - A story quiz and a "This book belongs to" page
 >
 > Out of love and respect, no prophet is ever shown. Real photographs and gentle illustrations show the world around each story instead.
 >
@@ -59,8 +59,8 @@
 
 ## What's in the book
 
-- Interior: 44 pages (title, "belongs to" page, copyright, Bismillah, parents' note, contents, 6 chapters, quiz, star chart, The End)
-- Ebook: 46 pages (front cover and back cover added)
+- Interior: 43 pages (title, "belongs to" page, copyright, Bismillah, parents’ note, contents, 6 chapters, quiz, The End)
+- Ebook: 45 pages (front cover and back cover added)
 - Fonts: Baloo 2, Nunito, Amiri and Aref Ruqaa, all under the SIL Open Font License, so you can sell the book with them embedded
 - Pictures: 13 pages use real photographs from Wikimedia Commons (no people's faces). All are free to use in a book you sell (CC0, public domain, CC BY or CC BY-SA). The photographers are credited on the copyright page, as these licences require, and the list is in `photos/credits.json`. Keep those credits in every edition.
 - The other pages use original vector art made for this book. You own it along with the text.
