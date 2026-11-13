@@ -17,6 +17,17 @@ const src = fs.readFileSync(path.join(ROOT, '..', 'islamic-kids-storybook.html')
 const d0 = src.indexOf('<svg width="0"');
 const sceneDefs = src.slice(d0, src.indexOf('</svg>', d0) + 6);
 const storyScript = src.slice(src.indexOf('/* ---------- illustration toolkit'), src.indexOf('/* ---------- rendering'));
+// Real photos: ebook/photos/<scene>.jpg|.png replaces the drawn scene; credits.json lists photo credits.
+const PHOTO_DIR = path.join(ROOT, 'photos'); cfg.photos = {}; cfg.credits = {};
+if (fs.existsSync(PHOTO_DIR)) {
+  for (const f of fs.readdirSync(PHOTO_DIR)) {
+    const m = f.match(/^([a-z0-9]+)\.(jpe?g|png|webp)$/i); if (!m) continue;
+    const mime = { jpg: 'jpeg', jpeg: 'jpeg', png: 'png', webp: 'webp' }[m[2].toLowerCase()];
+    cfg.photos[m[1]] = `data:image/${mime};base64,` + fs.readFileSync(path.join(PHOTO_DIR, f)).toString('base64');
+  }
+  const cf = path.join(PHOTO_DIR, 'credits.json'); if (fs.existsSync(cf)) cfg.credits = JSON.parse(fs.readFileSync(cf, 'utf8'));
+  console.log(`Using ${Object.keys(cfg.photos).length} photo(s): ${Object.keys(cfg.photos).join(', ') || 'none'}`);
+}
 const FONTS = 'https://fonts.googleapis.com/css2?family=Amiri:wght@400;700&family=Aref+Ruqaa:wght@400;700&family=Baloo+2:wght@600;700;800&family=Nunito:ital,wght@0,400;0,600;0,700;0,800;1,400&display=block';
 const html = `<!doctype html><html lang="en"><head><meta charset="utf-8"><link rel="stylesheet" href="${FONTS}">
 <style>${fs.readFileSync(path.join(ROOT, 'book.css'), 'utf8')}</style><style id="pagesize"></style></head>

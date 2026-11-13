@@ -53,7 +53,7 @@
     const inner = arch(i, i + 6, W - 2 * i, H - i - 6, a - 8), outer = arch(0, 0, W, H, a);
     return `<svg viewBox="0 0 ${W} ${H}" width="${W}" height="${H}" role="img" aria-label="${alt.replace(/"/g, '')}">
     <clipPath id="${id}"><path d="${inner}"/></clipPath><path d="${outer}" fill="url(#pat-tile)"/>
-    <g clip-path="url(#${id})"><svg x="${i}" y="${i + 6}" width="${W - 2 * i}" height="${H - i - 6}" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">${SC[scene]()}</svg></g>
+    <g clip-path="url(#${id})">${CFG.photos[scene] ? `<image href="${CFG.photos[scene]}" x="${i}" y="${i + 6}" width="${W - 2 * i}" height="${H - i - 6}" preserveAspectRatio="xMidYMid slice"/>` : `<svg x="${i}" y="${i + 6}" width="${W - 2 * i}" height="${H - i - 6}" viewBox="0 0 800 500" preserveAspectRatio="xMidYMid slice">${SC[scene]()}</svg>`}</g>
     <path d="${inner}" fill="none" stroke="url(#gold)" stroke-width="4"/><path d="${outer}" fill="none" stroke="url(#gold)" stroke-width="3"/></svg>`;
   }
   function shamsa(fill) {
@@ -97,6 +97,7 @@
       ${CFG.isbn ? `<p>ISBN: ${CFG.isbn}</p>` : ''}
       <p>The Qur’anic verses are shown in Arabic. The English meanings are simplified for young readers and are not a full translation. For study, please use a complete translation and learn from a qualified teacher.</p>
       <p>Out of love and respect, no prophet is drawn in this book.</p>
+      ${Object.keys(CFG.credits).length ? `<p>Photo credits: ${Object.values(CFG.credits).join('; ')}.</p>` : ''}
       <p>Published by ${CFG.publisher}. First edition ${CFG.year}.</p></div>` }),
     bismillah: () => ({ cls: 'night', band: NAVY, pre: '<div class="glowbg"></div>', html: `<div class="content"><div class="cart">${cart()}<div class="t" lang="ar">بِسْمِ اللَّهِ الرَّحْمَٰنِ الرَّحِيمِ</div></div><p class="cream">In the name of Allah, the Most Gracious, the Most Merciful</p>${divider(240, '#E2B65A')}</div>` }),
     parents: () => ({ cls: 'paper', num: true, html: `<div class="prose"><h2>For Parents and Teachers</h2>${divider(200)}
