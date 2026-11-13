@@ -42,7 +42,7 @@
 > - A "Talk Together" question for parents and teachers after each story
 > - A story quiz, a good-manners star chart and a "This book belongs to" page
 >
-> Out of love and respect, no prophet is ever drawn. The pictures show the world around each story instead.
+> Out of love and respect, no prophet is ever shown. Real photographs and gentle illustrations show the world around each story instead.
 >
 > It's a good fit for bedtime reading, weekend Islamic school, homeschooling, Ramadan and Eid gifts.
 
@@ -62,4 +62,5 @@
 - Interior: 44 pages (title, "belongs to" page, copyright, Bismillah, parents' note, contents, 6 chapters, quiz, star chart, The End)
 - Ebook: 46 pages (front cover and back cover added)
 - Fonts: Baloo 2, Nunito, Amiri and Aref Ruqaa, all under the SIL Open Font License, so you can sell the book with them embedded
-- Illustrations: original vector art made for this book. You own them along with the text.
+- Pictures: 13 pages use real photographs from Wikimedia Commons (no people's faces). All are free to use in a book you sell (CC0, public domain, CC BY or CC BY-SA). The photographers are credited on the copyright page, as these licences require, and the list is in `photos/credits.json`. Keep those credits in every edition.
+- The other pages use original vector art made for this book. You own it along with the text.
