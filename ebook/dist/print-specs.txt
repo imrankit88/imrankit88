@@ -1,0 +1,7 @@
+Print specs (Amazon KDP paperback)
+Trim size: 8.5 x 8.5 in, bleed, premium colour ink, white paper
+Interior pages: 44
+Spine width: 0.1033 in (44 pages x 0.002347 in)
+Cover PDF size: 17.354 x 8.750 in
+No spine text (KDP allows spine text only from 79 pages).
+Barcode: leave the area at the bottom right of the back cover clear; KDP adds the barcode there.

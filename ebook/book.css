@@ -1,0 +1,124 @@
+/* Square picture book, 8.5 x 8.5 in trim (816px at 96dpi). Manuscript palette: parchment, lapis, teal tile, gold leaf. */
+*{box-sizing:border-box}
+html,body{margin:0;padding:0;background:#6B6B6B}
+body{-webkit-print-color-adjust:exact;print-color-adjust:exact;font-family:"Nunito",sans-serif}
+#book.sheet{display:grid;grid-template-columns:repeat(8,var(--pw));gap:24px;padding:24px;zoom:.25;width:max-content}
+
+.page{position:relative;overflow:hidden;width:var(--pw);height:var(--ph);break-after:page;page-break-after:always;color:#2A2320}
+.page:last-child{break-after:auto;page-break-after:auto}
+.page .bg{position:absolute;inset:0;width:100%;height:100%}
+.paper{background:radial-gradient(ellipse at 50% 45%,#FFFBF2 0%,#F8F0DF 68%,#EFE2C6 100%)}
+.night{background:#0C1C42;color:#FFF5DE}
+.trim{position:absolute;width:816px;height:816px;left:var(--tx,0px);top:var(--ty,0px)}
+.frame{position:absolute;inset:0;width:816px;height:816px}
+.glowbg{position:absolute;inset:0;background:radial-gradient(circle at 50% 44%,rgba(70,125,205,.6) 0%,rgba(30,70,140,.25) 45%,rgba(0,0,0,0) 72%)}
+
+/* story pages */
+.story .art{position:absolute;left:92px;top:70px;width:632px;height:var(--H)}
+.story .art svg{display:block}
+.story .txt{position:absolute;left:100px;right:100px;top:calc(70px + var(--H) + 12px);bottom:66px;overflow:hidden;font-size:var(--fs)}
+.eyebrow{font:700 12.5px "Baloo 2";letter-spacing:.14em;text-transform:uppercase;color:var(--dk);display:flex;gap:8px;align-items:center;line-height:1.4}
+.pbuh{font:400 15px Amiri;letter-spacing:0;text-transform:none;color:#9A6B1E}
+.story h2{font:800 29px/1.1 "Baloo 2";color:#1C3B73;margin:0 0 4px}
+.story p{margin:0 0 .4em;line-height:1.42}
+.story.first .txt p:first-of-type::first-letter{float:left;font:800 3.05em/.92 "Baloo 2";color:#B9832A;margin:3px 7px 0 0}
+.ayah{border:1.5px solid #D4A13F;border-radius:12px;background:#FFF8E6;padding:3px 14px 6px;margin:2px 0 .45em;text-align:center}
+.ayah .ar{font:400 1.28em/1.75 Amiri;direction:rtl;color:#1F3B2E}
+.ayah .en{font-style:italic;font-size:.92em;line-height:1.35}
+.ayah .ref{font:700 11px Nunito;color:#8A6A3A;letter-spacing:.04em;margin-top:2px}
+
+/* chapter openers */
+.opener{background:radial-gradient(circle at 50% 45%,var(--ch) 0%,var(--dk) 60%,#0E0B14 125%);color:#FFF5DE}
+.opener .shamsa{position:absolute;left:188px;top:150px;width:440px;height:440px}
+.op-top{position:absolute;top:92px;left:0;right:0;text-align:center;font:800 20px "Baloo 2";letter-spacing:.3em;text-transform:uppercase;color:#F2D27C}
+.op-ar{position:absolute;top:262px;left:0;right:0;text-align:center;line-height:1.3;color:#F6D98A}
+.op-ar span{font:700 92px/1.3 "Aref Ruqaa";display:inline-block}
+.op-pbuh{position:absolute;top:436px;left:0;right:0;text-align:center;font:400 24px Amiri;color:#F2D27C}
+.op-name{position:absolute;top:612px;left:0;right:0;text-align:center;font:800 52px/1 "Baloo 2";color:#FFF5DE}
+.op-sub{position:absolute;top:676px;left:0;right:0;text-align:center;font:italic 400 23px Nunito;color:#F1DDB0}
+
+/* lesson pages */
+.ls{position:absolute;inset:80px 96px 82px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:14px}
+.ls-h{font:800 36px/1 "Baloo 2";color:#1C3B73}
+.badge{position:relative;width:226px;height:226px;flex:none}
+.badge svg{position:absolute;inset:0}
+.badge .bt{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:0 60px;gap:2px}
+.badge .bt small{font:700 11px "Baloo 2";letter-spacing:.14em;text-transform:uppercase;color:#8A6A3A}
+.badge .bt b{font:800 21px/1.08 "Baloo 2";color:var(--dk)}
+.ls-t{font-size:21px;line-height:1.5;margin:0;max-width:570px}
+.talk{display:flex;gap:12px;text-align:left;align-items:flex-start;border:2.5px dashed var(--ch);border-radius:16px;padding:12px 18px;font-size:18px;line-height:1.45;max-width:590px;background:#FFFDF7}
+.talk svg{flex:none;width:30px;height:30px;margin-top:2px}
+.talk b{font:800 19px "Baloo 2";color:var(--dk)}
+
+/* general layouts */
+.content{position:absolute;inset:80px 96px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;gap:12px}
+.ar-big{font:700 64px/1.3 "Aref Ruqaa";color:#B07A1E}
+.ar-big.gold{color:#F2CF7A}
+h1{font:800 54px/1.05 "Baloo 2";color:#1C3B73;margin:0}
+.night h1{color:#FFF5DE}
+.series{font:800 16px "Baloo 2";letter-spacing:.24em;text-transform:uppercase;color:#0F5257}
+.subt{font:700 30px/1.1 "Baloo 2";color:#B8456A}
+.author{font:700 20px Nunito;color:#5A4A3A}
+.dv{display:block;flex:none}
+.bl{font:800 36px "Baloo 2";color:#1C3B73}
+.bl-ar{font:400 26px Amiri;color:#9A6B1E}
+.nameline{width:500px;height:70px;border-bottom:3px dotted #C8922E}
+.hint{font:italic 400 16px Nunito;color:#7A6A5A}
+
+.prose{position:absolute;inset:86px 104px;display:flex;flex-direction:column;gap:12px;justify-content:center}
+.prose h2{font:800 32px/1.1 "Baloo 2";color:#1C3B73;margin:0}
+.prose p{font-size:17.5px;line-height:1.55;margin:0}
+.prose.copy{justify-content:flex-end;gap:10px}
+.prose.copy p{font-size:13px;line-height:1.55;color:#4A3E34}
+.prose.copy .bt{font:800 18px "Baloo 2";color:#1C3B73}
+
+.toc{list-style:none;margin:0;padding:0;width:100%;display:grid;gap:13px;text-align:left}
+.toc li{display:flex;align-items:center;gap:14px;font:700 22px/1.1 "Baloo 2";color:#2A2320}
+.toc .n{width:42px;height:42px;border-radius:50%;display:grid;place-items:center;background:var(--c);color:#fff;border:3px solid #D4A13F;font-size:18px;flex:none}
+.toc .ar{font:400 21px Amiri;color:#9A6B1E;margin-left:6px}
+.toc .dots{flex:1;border-bottom:2.5px dotted #C9B38A;transform:translateY(-5px);min-width:20px}
+.toc .sm{display:block;font:italic 400 14.5px Nunito;color:#6A5A4A;margin-top:2px}
+.toc .pg{font-variant-numeric:tabular-nums}
+
+.quiz{width:100%;display:grid;gap:11px;text-align:left}
+.quiz .q b{font:800 17.5px/1.25 "Baloo 2";color:#1C3B73}
+.quiz .o{display:flex;flex-wrap:wrap;gap:6px 24px;margin-top:3px;font-size:17px}
+.quiz .o span::before{content:"";display:inline-block;width:16px;height:16px;border:2px solid #C8922E;border-radius:50%;margin-right:7px;vertical-align:-2px}
+.answers{transform:rotate(180deg);font-size:12px;color:#7A6A5A;line-height:1.4}
+
+.stars{display:grid;grid-template-columns:repeat(3,1fr);gap:14px 20px;width:100%}
+.stars .s{display:flex;flex-direction:column;align-items:center;gap:3px}
+.stars svg{width:128px;height:128px}
+.stars b{font:800 18px/1.1 "Baloo 2";color:#2A2320}
+.stars small{font:700 11.5px "Baloo 2";letter-spacing:.1em;text-transform:uppercase;color:#8A6A3A}
+
+.cart{position:relative;width:620px;height:210px;flex:none}
+.cart.small{width:500px;height:150px}
+.cart svg{position:absolute;inset:0;width:100%;height:100%}
+.cart .t{position:absolute;inset:0;display:grid;place-items:center;font:700 44px/1.4 Amiri;color:#F6D98A;direction:rtl;padding:0 60px}
+.cart.small .t{font-size:40px}
+.cream{color:#F1DDB0;font-size:19px;font-style:italic;margin:0;line-height:1.5}
+
+/* covers */
+.cv-ar{position:absolute;top:66px;left:0;right:0;text-align:center;font:700 56px/1.3 "Aref Ruqaa";color:#F2CF7A}
+.cv-title{position:absolute;top:150px;left:60px;right:60px;text-align:center;font:800 62px/1 "Baloo 2";color:#FFF6DC;text-shadow:0 3px 0 #B9832A,0 8px 24px rgba(0,0,0,.45)}
+.cv-glow{position:absolute;left:108px;top:190px;width:600px;height:480px;background:radial-gradient(closest-side,rgba(255,226,150,.5),rgba(255,226,150,0))}
+.cv-art{position:absolute;left:188px;top:232px;width:440px;height:400px}
+.cv-rib{position:absolute;left:138px;top:628px;width:540px;height:78px}
+.cv-rib svg{position:absolute;inset:0}
+.cv-rib .t{position:absolute;inset:0;display:grid;place-items:center;font:800 33px "Baloo 2";color:#0B1F45}
+.cv-badge{position:absolute;width:108px;height:108px;display:grid;place-items:center;text-align:center;font:800 17px/1.05 "Baloo 2";color:#0B1F45}
+.cv-badge svg{position:absolute;inset:0}
+.cv-badge span{position:relative}
+.cv-author{position:absolute;top:722px;left:0;right:0;text-align:center;font:700 20px Nunito;color:#F3D58A;letter-spacing:.06em}
+
+.bk{position:absolute;inset:74px 96px 150px;display:flex;flex-direction:column;gap:13px;align-items:center;text-align:center}
+.bk .ar{font:700 42px/1.25 "Aref Ruqaa";color:#F2CF7A}
+.bk h2{font:800 31px/1.1 "Baloo 2";color:#FFF6DC;margin:0}
+.bk p{font-size:16.5px;line-height:1.55;margin:0;color:#F4E7CB}
+.bk ul{list-style:none;padding:0;margin:0;display:grid;gap:6px;text-align:left;font-size:16px;color:#F4E7CB}
+.bk li::before{content:"";display:inline-block;width:8px;height:8px;background:#F2CF7A;transform:rotate(45deg);margin-right:10px;vertical-align:2px}
+.bk .note{font-style:italic;color:#F1DDB0;font-size:15px}
+.meds{display:flex;gap:12px;flex-wrap:wrap;justify-content:center}
+.med{width:70px;height:70px;border-radius:50%;border:3px solid #D4A13F;display:grid;place-items:center;font:400 19px Amiri;color:#F6D98A;background:rgba(255,255,255,.07)}
+.bk-foot{position:absolute;left:96px;bottom:84px;text-align:left;font:700 14px/1.5 Nunito;color:#F3D58A}
